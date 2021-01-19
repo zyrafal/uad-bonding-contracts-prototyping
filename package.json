@@ -11,11 +11,15 @@
   "license": "ISC",
   "devDependencies": {
     "@nomiclabs/hardhat-ethers": "^2.0.1",
+    "@nomiclabs/hardhat-etherscan": "^2.1.0",
     "@nomiclabs/hardhat-waffle": "^2.0.1",
     "chai": "^4.2.0",
+    "dotenv": "^8.2.0",
     "ethereum-waffle": "^3.2.1",
     "ethers": "^5.0.26",
-    "hardhat": "^2.0.8"
+    "hardhat": "^2.0.8",
+    "hardhat-contract-sizer": "^2.0.2",
+    "hardhat-gas-reporter": "^1.0.4"
   },
   "dependencies": {
     "@openzeppelin/contracts": "^3.3.0"

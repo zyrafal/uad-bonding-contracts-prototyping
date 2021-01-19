@@ -1,22 +1,60 @@
 require("@nomiclabs/hardhat-waffle");
+require("@nomiclabs/hardhat-etherscan");
+require('dotenv').config();
+require('hardhat-contract-sizer');
+require("hardhat-gas-reporter");
 
-// This is a sample Hardhat task. To learn how to create your own go to
-// https://hardhat.org/guides/create-task.html
-task("accounts", "Prints the list of accounts", async () => {
-  const accounts = await ethers.getSigners();
-
-  for (const account of accounts) {
-    console.log(account.address);
-  }
-});
-
-// You need to export an object to set up your config
-// Go to https://hardhat.org/config/ to learn more
-
-/**
- * @type import('hardhat/config').HardhatUserConfig
- */
 module.exports = {
-  solidity: "0.7.3",
-};
+  solidity: {
+    compilers: [
+      {
+        version: "0.6.6"
+      },
+      {
+        version: "0.5.11"
+      },
+      {
+        version: "0.6.0"
+      },
+      {
+        version: "0.6.2"
+      }
+    ]
+  },
 
+
+  gasReporter: {
+    currency: 'USD',
+    enabled: false,
+    coinmarketcap: 'bccef7ad-0ba5-4b4e-83d0-e1a488812524',
+  },
+
+
+  paths: {
+    artifacts: "./app/artifacts",
+  },
+
+  networks: {
+    ropsten: {
+      url: process.env.URL,
+      accounts: [process.env.PRIVATE_KEY]
+
+    },
+    localhost: {
+      url: "http://localhost:9111",
+      accounts: [process.env.PRIVATE_KEY]
+    }
+  },
+
+  etherscan: {
+
+    apiKey: process.env.API
+  },
+
+  contractSizer: {
+  alphaSort: true,
+  runOnCompile: true,
+  disambiguatePaths: false,
+}
+
+};
